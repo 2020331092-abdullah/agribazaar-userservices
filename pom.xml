@@ -5,20 +5,25 @@
                              https://maven.apache.org/xsd/maven-4.0.0.xsd">
                              
     <modelVersion>4.0.0</modelVersion>
-
-    <!-- Inherit from the parent project -->
-    <parent>
-        <groupId>org.sust_unknowns.javafest</groupId>
-        <artifactId>Microservice</artifactId>
-       	<version>0.0.1-SNAPSHOT</version>s
-    </parent>
-
-    <!-- Module-specific coordinates -->
-    <artifactId>userservices</artifactId>
+<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.3</version>
+		<relativePath />
+	</parent>
+	<groupId>Microservices</groupId>
+	 <artifactId>userservices</artifactId>
     <name>userservices</name>
-    <description>User Services module for the microservices project</description>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>gateway</name>
+	<description>User Services module for the microservices project</description>
+
+    
     <properties>
-    <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <java.version>17</java.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+  
+    
 </properties>
 
 
