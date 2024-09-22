@@ -15,7 +15,6 @@
 	 <artifactId>userservices</artifactId>
     <name>userservices</name>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gateway</name>
 	<description>User Services module for the microservices project</description>
 
     
