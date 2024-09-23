@@ -91,12 +91,6 @@ public class UserController {
     public ResponseEntity<String> loginUser(@RequestBody RequestUser requestUser) {
 
         User user = userService.getUserByEmail(requestUser.getEmail());
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not found");
-        }
-        if (!user.isVerified()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not verified");
-        }
         if (codeGenarator.checkPassword(requestUser.getPassword(), user.getPassword())) {
             String token = jwtUtils.generateToken(user.getId());
             HttpHeaders headers = new HttpHeaders();
