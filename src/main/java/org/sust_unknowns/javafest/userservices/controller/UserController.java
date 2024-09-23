@@ -72,7 +72,7 @@ public class UserController {
     @PostMapping("/verify")
     public ResponseEntity<Object> verifyUser(@RequestBody VerifyUser requestUser) {
         System.out.println(requestUser.getId());
-        if (!userService.checkUser(requestUser.getId())) {
+        if (!userService.checkUserByID(requestUser.getId())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User not exist");
         }
         User user = userService.getUserById(requestUser.getId());
