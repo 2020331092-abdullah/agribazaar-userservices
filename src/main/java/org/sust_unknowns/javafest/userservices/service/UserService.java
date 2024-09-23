@@ -44,8 +44,8 @@ public class UserService {
     }
 
     // Method to check if a user exists by ID
-    public boolean checkUser(String email) {
-        return userRepository.existsByEmail(email);
+    public boolean checkUser(String id) {
+        return userRepository.existsById(id);
     }
 
     // Method to retrieve a user by email
