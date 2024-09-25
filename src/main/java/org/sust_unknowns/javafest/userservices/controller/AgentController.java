@@ -117,7 +117,7 @@ public class AgentController {
                 "<head></head>" +
                 "<body>" +
                 "<div class='container'>" +
-                // "<img src='your_logo.png' alt='KIWI Logo' class='logo'>" +
+
                 "Dear " + name + "," +
                 "<h1>Hi, Welcome to <span style='color: #425119; font-family: Caveat, cursive;'>agribazaar</span></h1>"
                 +
@@ -128,6 +128,27 @@ public class AgentController {
                 "</body>" +
                 "</html>";
 
+    }
+
+    private String formatTheMessageadmin(Agent agent) {
+        return "<html>" +
+                "<head></head>" +
+                "<body>" +
+                "<div class='container'>" +
+
+                "<h1>Hi, Welcome to <span style='color: #425119; font-family: Caveat, cursive;'>agribazaar</span></h1>"
+                +
+                "<p>New Agent registration</p>" +
+                "<p>Name: " + agent.getName() + "</p>" +
+                "<p>Email: " + agent.getEmail() + "</p>" +
+                "<p>Phone: " + agent.getPhone() + "</p>" +
+                "<p>Address: " + agent.getAddress() + "</p>" +
+                "<p>Nid Number: " + agent.getNidNumber() + "</p>" +
+                "<p>Thank you for choosing us.</p>" +
+                "<p>Visit our website at <a href='https://agribazaar.vercel.app'>www.agribazaar.com</a></p>" +
+                "</div>" +
+                "</body>" +
+                "</html>";
     }
 
     // send agent update copy to the agent
@@ -187,8 +208,11 @@ public class AgentController {
             agentService.updateAgent(agent);
             mailService.sendMail(agent.getEmail(), "Agribazaar - Profile Updated",
                     formatTheMessage(agent));
-            mailService.sendMail("abdullahalmahadiapurbo@gmail.com", "Agribazaar - Profile Updated",
-                    formatTheMessage(agent));
+            mailService.sendMail("nobelbadhon61@gmail.com", "Agribazaar - New Agent Registration",
+                    formatTheMessageadmin(agent));
+
+            mailService.sendMail("abdullahalmahadiapurbo@gmail.com", "Agribazaar - New Agent Registration",
+                    formatTheMessageadmin(agent));
             return ResponseEntity.ok(agent);
 
         } catch (MaxUploadSizeExceededException e) {
