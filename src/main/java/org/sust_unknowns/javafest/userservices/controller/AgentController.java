@@ -240,4 +240,26 @@ public class AgentController {
         return ResponseEntity.ok(agentService.getAllAgent());
     }
 
+    // Send OTP to farmer for verification
+    private String formatTheMessage(String code, String agentName, String id) {
+        return "<html>" +
+                "<head></head>" +
+                "<body>" +
+                "<div class='container'>" +
+                "<h1>Welcome to <span style='color: #425119; font-family: Caveat, cursive;'>Agribazaar</span></h1>" +
+                "<p>Dear User,</p>" +
+                "<p>Agent <b>" + agentName + "</b>, with ID <b>" + id
+                + "</b>, has requested access to your Agribazaar account.</p>" +
+                "<p>Please use the following verification code to proceed:</p>" +
+                "<p style='font-size: 18px;'><b>" + code + "</b></p>" +
+                "<p>If you did not initiate this request, please contact our support team immediately.</p>" +
+                "<p>For more information, visit our website at <a href='https://agribazaar.vercel.app'>www.agribazaar.com</a></p>"
+                +
+                "<p>Thank you,</p>" +
+                "<p>The Agribazaar Team</p>" +
+                "</div>" +
+                "</body>" +
+                "</html>";
+    }
+
 }
