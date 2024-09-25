@@ -140,7 +140,7 @@ public class UserController {
                 +
                 "<p>Your verification code is: <b>" + code + "</b></p>" +
                 "<p>Thank you for choosing us.</p>" +
-                "<p>Visit our website at <a href='https://www.agribazaar.com'>www.agribazaar.com</a></p>" +
+                "<p>Visit our website at <a href='https://agribazaar.vercel.app'>www.agribazaar.com</a></p>" +
                 "</div>" +
                 "</body>" +
                 "</html>";

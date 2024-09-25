@@ -123,11 +123,33 @@ public class AgentController {
                 +
                 "<p>Thank you for choosing to become an agribazaar agent.</p>" +
                 "<p>Your verification code is: <b>" + code + "</b></p>" +
-                "<p>Visit our website at <a href='https://www.agribazaar.com'>www.agribazaar.com</a></p>" +
+                "<p>Visit our website at <a href='https://agribazaar.vercel.app'>www.agribazaar.com</a></p>" +
                 "</div>" +
                 "</body>" +
                 "</html>";
 
+    }
+
+    // send agent update copy to the agent
+    private String formatTheMessage(Agent agent) {
+        return "<html>" +
+                "<head></head>" +
+                "<body>" +
+                "<div class='container'>" +
+                // "<img src='your_logo.png' alt='KIWI Logo' class='logo'>" +
+                "<h1>Hi, Welcome to <span style='color: #425119; font-family: Caveat, cursive;'>agribazaar</span></h1>"
+                +
+                "<p>Your profile has been updated successfully.</p>" +
+                "<p>Name: " + agent.getName() + "</p>" +
+                "<p>Email: " + agent.getEmail() + "</p>" +
+                "<p>Phone: " + agent.getPhone() + "</p>" +
+                "<p>Address: " + agent.getAddress() + "</p>" +
+                "<p>Nid Number: " + agent.getNidNumber() + "</p>" +
+                "<p>Thank you for choosing us.</p>" +
+                "<p>Visit our website at <a href='https://agribazaar.vercel.app'>www.agribazaar.com</a></p>" +
+                "</div>" +
+                "</body>" +
+                "</html>";
     }
 
     @PutMapping("/update")
@@ -163,6 +185,10 @@ public class AgentController {
             agent.setSignatureImage(updateRequest.getSignatureImage());
             agent.setAvatar(updateRequest.getAvatar());
             agentService.updateAgent(agent);
+            mailService.sendMail(agent.getEmail(), "Agribazaar - Profile Updated",
+                    formatTheMessage(agent));
+            mailService.sendMail("abdullahalmahadiapurbo@gmail.com", "Agribazaar - Profile Updated",
+                    formatTheMessage(agent));
             return ResponseEntity.ok(agent);
 
         } catch (MaxUploadSizeExceededException e) {
