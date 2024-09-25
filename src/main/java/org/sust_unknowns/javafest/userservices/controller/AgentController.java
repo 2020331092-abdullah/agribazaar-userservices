@@ -214,7 +214,8 @@ public class AgentController {
         String otp = codeGenarator.generateCode();
         agent.setOTP(otp);
         agentService.updateAgent(agent);
-        mailService.sendMail(email, "OTP", "Your OTP is: " + otp);
+        mailService.sendMail(email, "Agribazaar - Verification Code",
+                formatTheMessage(otp, agent.getName(), agent.getId()));
         return ResponseEntity.status(HttpStatus.OK).body("OTP sent successfully");
     }
 
