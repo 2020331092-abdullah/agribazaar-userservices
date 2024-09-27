@@ -34,6 +34,18 @@ public class AgentController {
         this.agentService = agentService;
     }
 
+    @PostMapping("/resend")
+    public ResponseEntity<Boolean> resendCode(@RequestParam String id) {
+
+        if (id == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+        Agent agent = agentService.getAgentById(id);
+        mailService.sendMail(agent.getEmail(), "Agribazaar - Verification Code (Resend)",
+                formatTheMessage(agent.getCode(), agent.getName()));
+        return ResponseEntity.ok(true);
+    }
+
     @PostMapping("/register")
     public ResponseEntity<String> createAgent(@RequestBody Agent agent) {
         System.out.println(agent.getEmail());
