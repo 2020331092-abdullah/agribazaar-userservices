@@ -59,6 +59,7 @@ public class UserController {
         user.setUpazila(requestUser.getUpazila());
         user.setZila(requestUser.getZila());
         user.setOrganization(requestUser.getOrganization());
+
         userService.createUser(user);
         mailService.sendMail(user.getEmail(), "Agribazaar - Verification Code", formatTheMessage(user.getCode()));
         return ResponseEntity.status(HttpStatus.OK).body(user.getId());
@@ -172,8 +173,8 @@ public class UserController {
     }
 
     @PostMapping("/resend")
-    public ResponseEntity<Boolean> resendCode(@RequestHeader("Authorization") String token) {
-        String id = jwtUtils.validateToken(token);
+    public ResponseEntity<Boolean> resendCode(@RequestParam String id) {
+
         if (id == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
