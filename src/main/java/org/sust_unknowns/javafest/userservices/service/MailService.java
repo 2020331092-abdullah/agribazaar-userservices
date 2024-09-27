@@ -32,6 +32,7 @@ public class MailService {
             // Print an error message if sending fails
             System.out.println("Failed to send email to " + to + ": " + e.getMessage());
             System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
