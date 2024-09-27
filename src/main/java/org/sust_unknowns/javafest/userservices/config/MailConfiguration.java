@@ -15,7 +15,7 @@ public class MailConfiguration {
     public JavaMailSender getJavaMailSender() {
         // Email and password for the mail sender
         String mail = "abdullahalmahadiapurbo@gmail.com";
-        String password = "btsluglhsxisxskd";
+        String password = "bdruvmbgrbzegyvu";
 
         // Create and configure JavaMailSenderImpl instance
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
